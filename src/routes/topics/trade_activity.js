@@ -1,0 +1,41 @@
+// 交易大赛
+import React from "react";
+import { connect } from "dva";
+import LayoutRC from "../../components/layout_new";
+import Content from "../../components/topics/trade_activity";
+import withRoot from "../../withRoot";
+
+function activityPage({
+  layout,
+  topic,
+  loading,
+  dispatch,
+  location,
+  history,
+  match
+}) {
+  return (
+    <LayoutRC
+      {...layout}
+      loading={loading}
+      dispatch={dispatch}
+      location={location}
+    >
+      <Content
+        {...layout}
+        {...topic}
+        loading={loading}
+        dispatch={dispatch}
+        location={location}
+        history={history}
+        match={match}
+      />
+    </LayoutRC>
+  );
+}
+
+function mapStateToProps({ layout, topic, loading }) {
+  return { layout, topic, loading };
+}
+
+export default withRoot(connect(mapStateToProps)(activityPage));

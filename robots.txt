@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /mapi
+Disallow: /ms_api
+Disallow: /openapi
+Disallow: /j
+

@@ -1,0 +1,10 @@
+include:
+  - project: "bhpc/ci"
+    file: "/nodejs.yml"
+  - project: "bhpc/ci"
+    file: "/helm/base.yml"
+  - project: "bhpc/ci"
+    file: "/helm/master.yml"
+
+variables:
+  APP_ENTRY: "broker-webplus"

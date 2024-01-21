@@ -1,0 +1,11 @@
+html,
+body {
+  background: #202F44 !important;
+}
+a {
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+}
+a:hover {
+  color: #2f7df6;
+}

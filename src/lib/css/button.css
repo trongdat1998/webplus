@@ -1,0 +1,64 @@
+.g-btn {
+  display: inline-block;
+  border: 0;
+  text-align: center;
+  transition: all 0.25s ease-out;
+  vertical-align: middle;
+  font-size: 14px;
+  outline: none;
+  padding: 6px 20px;
+  background: #2f7df6;
+  color: #fff;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.g-btn:hover {
+  opacity: 0.6;
+}
+
+.g-btn:disabled {
+  cursor: not-allowed;
+  background: #60677e;
+  color: #9ca5b0;
+}
+
+.g-btn:disabled:hover {
+  background: #60677e;
+  color: #9ca5b0;
+}
+
+.g-btn-red {
+  background: #ff5361;
+}
+
+.g-btn-green {
+  background: #54b883;
+}
+
+.g-btn-default {
+  background: none;
+  color: #2f7df6;
+}
+
+.g-btn-group {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #424c6d;
+}
+
+.g-btn-group .g-btn {
+  flex: 1;
+  border-radius: 0;
+}
+
+.g-btn-group.g-btn-group-justify {
+  display: flex;
+  width: 100%;
+}
+
+.g-btn-group.g-btn-group-justify .g-btn,
+.g-btn-group.g-btn-group-justify .g-btn-hollow {
+  flex: 1;
+}

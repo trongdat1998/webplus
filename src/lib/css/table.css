@@ -1,0 +1,97 @@
+.g-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #333c5a;
+}
+.g-table .theader {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  color: #9ca5b0;
+  font-size: 12px;
+}
+
+.g-table .theader div {
+  flex: 1;
+}
+
+.g-table .theader div:first-child {
+  padding: 0 0 0 20px;
+}
+
+.g-table .tbody {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #424c6d;
+}
+
+.g-table .item {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  color: #fff;
+  border-bottom: 1px solid #424c6d;
+}
+
+.g-table .item div {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.g-table .item div:first-child {
+  padding: 0 0 0 20px;
+}
+
+.g-table .item div .action {
+  color: #64b9fc;
+}
+
+.g-table .item:hover {
+  background: #2b3555;
+}
+
+.g-table .item .grey {
+  color: #9ca5b0;
+}
+
+.g-table .item .grey02 {
+  color: #c4cad7;
+}
+
+.g-table .noresult {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.g-table .noresult img {
+  width: 40px;
+}
+
+.g-table .noresult span {
+  color: #d3d5d6;
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.g-table .loading {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.g-table .loading2 {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+}

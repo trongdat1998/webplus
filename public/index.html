@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="google" content="notranslate" />
+  <script src="https://static.nucleex.com/public/polyfill.min.js"></script>
+  <script>
+    localStorage.quoteMode = localStorage.quoteMode || "Dark";
+    localStorage.optionQuoteMode = localStorage.optionQuoteMode || "Dark";
+    localStorage.futureQuoteMode = localStorage.futureQuoteMode || "Dark";
+    localStorage.leverQuoteMode = localStorage.leverQuoteMode || "Dark";
+
+    window.palette = {
+      common: {
+        black: "#242B32",
+        text: "#242B32",
+        surface: "#fff",
+        white: "#fff",
+        background: "#fff",
+      },
+      type: "light",
+      primary: {
+        main: "#3375E0",
+        light: "#4299FF",
+        dark: "#1F5DC1",
+        contrastText: "#fff",
+      },
+      secondary: {
+        main: "#FFC000",
+        light: "#FFF04E",
+        dark: "#F69400",
+        contrastText: "#000",
+      },
+      error: {
+        light: "#FF695E",
+        main: "#D23434",
+        dark: "#99000D",
+        contrastText: "#fff",
+      },
+      success: {
+        main: "#51D372",
+        light: "#51D372",
+        dark: "#51D372",
+        contrastText: "#fff",
+      },
+      down: {
+        light: "#FF695E",
+        main: "#D23434",
+        dark: "#99000D",
+        contrastText: "#fff",
+      },
+      up: {
+        main: "#51D372",
+        light: "#51D372",
+        dark: "#51D372",
+        contrastText: "#fff",
+      },
+      grey: {
+        50: "#F4F4F5",
+        100: "#E9EAEB",
+        200: "#D3D5D6",
+        500: "#919598",
+        800: "#50555B",
+      },
+      gray: {
+        50: "#F4F7FF",
+      },
+      white: {
+        70: "rgba(255, 255, 255, 0.7)",
+        80: "rgba(255, 255, 255, 0.8)",
+      },
+      black: {
+        800: "#0A1825",
+      },
+      // price: {
+      //   rice: "#54B883",
+      //   fail: "#ED3756"
+      // },
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
+      text: {
+        primary: "#242B32",
+        // secondary: "rgba(0, 0, 0, 0.54)",
+        // disabled: "rgba(0, 0, 0, 0.38)",
+        // hint: "rgba(0, 0, 0, 0.38)"
+      },
+      divider: "rgba(0, 0, 0, 0.12)",
+      background: {
+        paper: "#fff",
+        default: "#fff",
+        part: "#F7F9FC",
+        dark: "#202F44",
+      },
+      action: {
+        active: "rgba(0, 0, 0, 0.54)",
+        hover: "rgba(0, 0, 0, 0.08)",
+        hoverOpacity: 0.08,
+        selected: "rgba(0, 0, 0, 0.14)",
+        disabled: "rgba(0, 0, 0, 0.26)",
+        disabledBackground: "rgba(0, 0, 0, 0.12)",
+      },
+    };
+    window.palette2 = {
+      Dark: {
+        black: "#000000",
+        white: "#FFFFFF",
+        line: "#111217",
+        shadowColor: ["rgba(0, 0, 0, 0.2)"],
+        background: {
+          switch: "#B0BFDB",
+          paper: "#202F44",
+          list: "#1B283A",
+        },
+        grey: {
+          900: "#0A1825",
+          800: "#0E1D2C",
+          700: "#202F44",
+          500: "#475563",
+          300: "#6E8196",
+          200: "#B0BFDB",
+          100: "#E5EDFE",
+          50: "#F4F7FF",
+        },
+      },
+      Light: {
+        black: "#E5EDFE",
+        white: "#202F44",
+        line: "#E5EDFE",
+        shadowColor: ["rgba(0, 0, 0, 0.2)"],
+        background: {
+          switch: "#B0BFDB",
+          paper: "#FFFFFF",
+          list: "#F4F7FF",
+        },
+        grey: {
+          900: "#F4F7FF",
+          800: "#FFFFFF",
+          700: "#E5EDFE",
+          500: "#B0BFDB",
+          300: "#6E8196",
+          200: "#475563",
+          100: "#202F44",
+          50: "#0A1825",
+        },
+      },
+    };
+    window.WEB_CONFIG = {
+      page: {},
+      supportLanguages: [],
+    };
+  </script>
+  <script>
+    window.__set_config = function (data) {
+      window.WEB_CONFIG = data || {};
+      window.WEB_CONFIG.page = data.page || {};
+      window.WEB_CONFIG.supportLanguages = data.supportLanguages || [];
+      window.WEB_CONFIG.checkInviteCode = data.checkInviteCode;
+      window.WEB_CONFIG.riskIpDisabled = data.riskIpDisabled || {};
+      window.WEB_CONFIG.otcToken = data.otc_token || [];
+      window.WEB_CONFIG.registerOption = data.registerOption || 1;
+      window.WEB_CONFIG.realtimeInterval = data.realtimeInterval || "24h";
+      // 重置皮肤数据
+      /**
+       * [
+       * {content:{ theme: {}, kline: {} }
+       * type: 1,2; //1=Light,2=Dark
+       * useModule:1,2;   //1=全站,2=行情页
+       * tagName: ''
+       * },
+       * ...
+       * }
+       */
+      if (
+        window.WEB_CONFIG.colorTheme &&
+        window.WEB_CONFIG.colorTheme.length
+      ) {
+        // 全站theme
+        var all = {};
+        var kline = {
+          dark: {},
+          light: {},
+        };
+        for (var i = 0, l = window.WEB_CONFIG.colorTheme.length; i < l; i++) {
+          var item = window.WEB_CONFIG.colorTheme[i];
+          if (item.useModule == 1 && item.type == 1) {
+            all = item.content;
+            if (item.content.success && !item.content.up) {
+              all.up = item.content.success;
+            }
+            if (item.content.error && !item.content.down) {
+              all.down = item.content.error;
+            }
+          }
+          if (item.useModule == 2 && item.type == 1) {
+            kline.light = item.content;
+          }
+          if (item.useModule == 2 && item.type == 2) {
+            kline.dark = item.content;
+          }
+        }
+
+        window.palette = Object.assign(window.palette, all || {});
+        window.palette2 = {
+          Dark: Object.assign(window.palette2.Dark, kline.dark),
+          Light: Object.assign(window.palette2.Light, kline.light),
+        };
+      }
+      if (data.customKV) {
+        window.WEB_CONFIG.loginReg = data.customKV.loginReg || [];
+        window.WEB_CONFIG.analytics = data.customKV.analytics || {};
+      } else {
+        window.WEB_CONFIG.loginReg = [];
+        window.WEB_CONFIG.analytics = {};
+      }
+    };
+  </script>
+  <script>
+    var ismobile = /iphone|android|ipad/i.test(navigator.userAgent);
+
+    function setCookie(value) {
+      var str = value.name + "=" + encodeURIComponent(value.value);
+      value.domain =
+        value.domain ||
+        location.hostname.replace(
+          location.hostname.split(".").shift() + ".",
+          ""
+        );
+      if (value.domain) {
+        str += "; domain=" + value.domain;
+      }
+      str += "; path=" + (value.path || "/");
+      if (value.day) {
+        var time = new Date();
+        time.setTime(time.getTime() + value.day * 24 * 60 * 60 * 1000);
+        str += "; expires=" + time.toGMTString();
+      }
+      document.cookie = str;
+      return;
+    }
+
+    function getCookie(name) {
+      var value = document.cookie.match("(?:^|;)\\s*" + name + "=([^;]*)");
+      return value ? decodeURIComponent(value[1]) : null;
+    }
+
+    if (/preview/.test(window.location.search)) {
+      var domain = window.location.origin.split(".");
+      if (domain.length > 2) {
+        domain.splice(0, 1);
+      }
+      domain = [""].concat(domain);
+      if (window.location.href.indexOf("localhost") > -1) {
+        domain = ["localhost"];
+      }
+      setCookie({
+        name: "preview",
+        value: 1,
+        domain: domain.join("."),
+      });
+    }
+
+    !(function () {
+      if (ismobile && window.location.pathname != "/other/waitGuild") {
+        document.write('<meta name="viewport" content="initial-scale=0.3">');
+      }
+    })();
+
+  </script>
+  <script
+    src="/s_api/basic/config_v2_js?custom_keys=loginReg,analytics&callback=window.__set_config&tab=exchange&type=all&platform=1&without_country=true"></script>
+  <script>
+    (function () {
+      var _langList = [];
+      var _langText = {};
+      for (
+        var i = 0, l = window.WEB_CONFIG.supportLanguages.length;
+        i < l;
+        i++
+      ) {
+        _langList.push(
+          window.WEB_CONFIG.supportLanguages[i]["lang"].toLowerCase()
+        );
+        _langText[
+          window.WEB_CONFIG.supportLanguages[i]["lang"].toLowerCase()
+        ] = window.WEB_CONFIG.supportLanguages[i]["text"];
+      }
+
+      function browserLang() {
+        var ls = navigator.languages ? navigator.languages.length : 0;
+        var res = (ls
+          ? navigator.languages[0]
+          : navigator.language || navigator.userLanguage
+        ).toLowerCase();
+        // es, es-us, es-mx,es-gt等等西班牙语，统一使用 es
+        if (/^es-?/.test(res)) {
+          res = "es-es";
+        }
+        return res;
+      }
+
+      // ?source=xxxxx,写入cookie
+      function utm_source() {
+        var s = window.location.search;
+        var code = s.match(/(utm_source|source)\=([^&]{0,})/);
+        if (code && code[2]) {
+          setCookie({
+            name: "source",
+            value: code[2],
+            domain: location.hostname.replace(
+              location.hostname.split(".").shift() + ".",
+              ""
+            ),
+            day: 1,
+          });
+        }
+        var lang = s.match(/lang\=([^&]{0,})/);
+        if (lang && lang[1]) {
+          localStorage.lang = lang[1].toLowerCase();
+          setCookie({
+            name: "locale",
+            value: lang[1].toLowerCase(),
+            domain: location.hostname.replace(
+              location.hostname.split(".").shift() + ".",
+              ""
+            ),
+          });
+        }
+      }
+      utm_source();
+
+      function langPath(lang) {
+        var default_langs = {
+          "en-us": "en-us",
+          "zh-cn": "zh-cn",
+        };
+        var default_lang = default_langs[browserLang()] || "en-us";
+        var _lang =
+          lang ||
+          getCookie("locale") ||
+          (localStorage.lang
+            ? localStorage.lang.toLowerCase()
+            : browserLang()),
+          _langDefault = _langList[0] ? _langList[0] : default_lang;
+
+        // 不在语言列表,默认为en-us;
+        if (!_lang || _langList.indexOf(_lang) === -1) {
+          _lang = _langDefault;
+        }
+
+        // 如果是app环境
+        if (/bhe.?App/i.test(navigator.userAgent)) {
+          _lang = navigator.userAgent.match(/lang\/[^\s]{1,}/i);
+          if (_lang[0]) {
+            _lang = _lang[0].split("/");
+            _lang = _lang[_lang.length - 1].toLowerCase();
+          }
+        }
+        localStorage.lang = _lang; // 选择的语言
+        localStorage.unit = _lang; // 法币单位
+        window.localStorage.up_down = 0; // 默认配色方案，红跌绿涨
+        localStorage.lang_text = _langText[_lang];
+        var tmp = location.hostname.split(".");
+        setCookie({
+          name: "locale",
+          value: _lang,
+          domain: location.hostname.replace(tmp.shift() + ".", ""),
+        });
+      }
+      langPath();
+      window.g_k_ticker = [];
+      window.ws_binary = !Boolean(window.localStorage.ws_binary);
+    })();
+  </script>
+  <link id="favicon" rel="shortcut icon" />
+  <style>
+    ._g_mask {
+      width: 100%;
+      width: 100vw;
+      height: 100%;
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      color: #272d42;
+      display: none;
+    }
+
+    ._g_mask i {
+      font-size: 24px;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class="_g_mask" id="_g_mask">
+    <i class="g-icon g-icon-loading-3-quarters g-icon-spin"></i>
+  </div>
+  <div class="_g_mask" id="_g_mask2" style="display: none">
+    <h2 style="padding: 200px 0 0; text-align: center; width: 100%">
+      Sorry, this website does not currently support IE10 and below browsers, please use other browsers to access
+    </h2>
+  </div>
+  <script>
+    !(function () {
+      function getInternetExplorerVersion() {
+        var rv = -1;
+        if (navigator.appName == "Microsoft Internet Explorer") {
+          var ua = navigator.userAgent;
+          var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+          if (re.exec(ua) != null) rv = parseFloat(RegExp.$1);
+        } else if (navigator.appName == "Netscape") {
+          var ua = navigator.userAgent;
+          var re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+          if (re.exec(ua) != null) rv = parseFloat(RegExp.$1);
+        }
+        return rv;
+      }
+
+      var v = getInternetExplorerVersion();
+      window.IE_Version = v;
+      if (v < 11 && v > 0) {
+        document.getElementById("_g_mask2").style.display = "block";
+      }
+    })();
+    window.addEventListener(
+      "error",
+      function () {
+        var e = document.getElementById("root");
+        if (e && e.innerHTML == "") {
+          var ua = navigator.userAgent.toLowerCase();
+          var v = navigator.userAgent.match(/chrome\/(\d){1,}/i);
+          if (v && v[0]) {
+            v = v[0].split("/");
+            v = Number(v[1]);
+          }
+          if (
+            ua.indexOf("android") > -1 &&
+            !/microMessenger/i.test(ua) &&
+            v <= 50
+          ) {
+            location.href = "/m/download.html";
+          }
+        }
+      },
+      false
+    );
+  </script>
+  <script>
+    window.trackPageError = function () { };
+  </script>
+
+  <!-- Start of bhpc Zendesk Widget script -->
+  <script>
+    function addZdassets(url) {
+      if (document.querySelector("#ze-snippet") || !url) return;
+      var script = document.createElement("script");
+      script.id = "ze-snippet";
+      script.async = true;
+      script.src = url;
+      script.onload = function () {
+        var lang = window.localStorage.lang;
+        var langObj = {
+          "en-us": "en",
+          "zh-cn": "zh-CN",
+          "zh-hk": "zh-TW",
+          "th-th": "th",
+          "ko-kr": "ko",
+          "ja-jp": "ja",
+          "ru-ru": "ru",
+          "de-de": "de",
+          "es-es": "et",
+          "fr-fr": "fr",
+          "vi-vn": "vi",
+          "tr-tr": "tr",
+        };
+        zE(function () {
+          zE.setLocale(langObj[lang]);
+          if (
+            window.location.pathname.indexOf("/exchange") > -1 ||
+            window.location.pathname.indexOf("/contract/quote") > -1 ||
+            ismobile
+          ) {
+            zE("webWidget", "hide");
+          } else {
+            zE("webWidget", "show");
+          }
+        });
+      };
+      document.querySelector("body").appendChild(script);
+    }
+  </script>
+  <!-- End of bhpc Zendesk Widget script -->
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+export default (theme) => ({
+  // currency list
+  currency_list: {
+    minWidth: 1040,
+    maxWidth: 1200,
+    margin: "40px auto 64px",
+    "& h2": {
+      fontSize: 40,
+      lineHeight: "58px",
+      fontWeight: "normal",
+      textAlign: "center",
+      margin: "0 0 40px",
+    },
+    "& ul": {
+      width: "100%",
+      display: "flex",
+      flexWrap: "wrap",
+      "& li": {
+        width: 150,
+        height: 120,
+        textAlign: "center",
+        padding: "15px 15px 12px",
+        cursor: "pointer",
+        borderRight: `1px solid ${theme.palette.background.part}`,
+        borderBottom: `1px solid ${theme.palette.background.part}`,
+        "&:nth-of-type(8n + 1)": {
+          borderLeft: `1px solid ${theme.palette.background.part}`,
+        },
+        "& img": {
+          width: 48,
+          height: 48,
+          display: "block",
+          margin: "0 auto",
+        },
+        "&:hover": {
+          background:
+            "linear-gradient(180deg, rgba(51, 117, 224, 0.12) 0%, rgba(51, 117, 224, 0.02) 100%)",
+        },
+      },
+    },
+  },
+  bar: {
+    background: theme.palette.background.part,
+    padding: "16px 24px",
+    borderRadius: "5px 5px 0 0",
+    display: "flex",
+    alignItems: "center",
+    position: "relative",
+    "& button": {
+      minWidth: 97,
+      borderRadius: 4,
+      height: 36,
+      fontSize: 16,
+      marginRight: 20,
+      color: theme.palette.grey[800],
+      "&.select": {
+        background: theme.palette.primary.main,
+        color: theme.palette.common.white,
+      },
+    },
+  },
+  textField: {
+    position: "absolute",
+    right: 24,
+  },
+  textFieldDetail: {
+    padding: "24px 16px 0",
+    width: "100%",
+  },
+  inputRoot: {
+    flex: 1,
+    padding: "0 12px",
+    height: 36,
+    width: 160,
+    fontSize: 12,
+    position: "relative",
+    background: theme.palette.common.white,
+    "& legend": {
+      height: 0,
+    },
+    "& fieldset": {
+      top: 0,
+      border: `1px solid ${theme.palette.grey[100]} !important`,
+      borderRadius: 4,
+    },
+    "& input": {
+      color: theme.palette.common.text,
+      fontSize: 14,
+      padding: "0 10px 0 0",
+      height: "100%",
+      caretColor: theme.palette.common.text,
+      "&::placeholder": {
+        color: theme.palette.grey[200],
+        opacity: 1,
+      },
+    },
+    "& i": {
+      color: theme.palette.grey[500],
+    },
+  },
+  inputRootDetail: {
+    flex: 1,
+    padding: "0 12px",
+    height: 36,
+    width: "100%",
+    fontSize: 12,
+    position: "relative",
+    background: theme.palette.common.white,
+    "& legend": {
+      height: 0,
+    },
+    "& fieldset": {
+      top: 0,
+      border: `1px solid ${theme.palette.grey[100]} !important`,
+      borderRadius: 4,
+    },
+    "& input": {
+      color: theme.palette.common.text,
+      fontSize: 14,
+      padding: "0 10px 0 0",
+      height: "100%",
+      caretColor: theme.palette.common.text,
+      "&::placeholder": {
+        color: theme.palette.grey[200],
+        opacity: 1,
+      },
+    },
+    "& i": {
+      color: theme.palette.grey[500],
+    },
+  },
+  inputFocused: {
+    "& fieldset": {
+      borderColor: `${theme.palette.primary.main} !important`,
+    },
+  },
+  name: {
+    fontSize: 16,
+    lineHeight: "24px",
+  },
+  fullName: {
+    color: theme.palette.grey[500],
+    fontSize: 14,
+    lineHeight: "20px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  currency_detail: {
+    minWidth: 1040,
+    maxWidth: 1200,
+    maxHeight: "calc(100vh - 56px)",
+    margin: "0 auto",
+  },
+  left: {
+    minHeight: "100%",
+    maxHeight: "calc(100vh - 56px)",
+    // overflowY: "auto",
+    borderLeft: `1px solid ${theme.palette.grey[100]}`,
+    borderRight: `1px solid ${theme.palette.grey[100]}`,
+    // "&::-webkit-scrollbar": {
+    //   width: 5,
+    //   height: 5,
+    //   backgroundColor: "transparent",
+    // },
+    // "&::-webkit-scrollbar-track": {
+    //   width: 5,
+    //   height: 5,
+    //   backgroundColor: "transparent",
+    // },
+    // "&::-webkit-scrollbar-thumb": {
+    //   backgroundColor: "rgba(0, 0, 0, 0.6)",
+    //   borderRadius: 5,
+    // },
+    "& ul": {
+      height: "calc(100% - 108px)",
+      overflowY: "auto",
+      padding: "6px 0 12px",
+      "& li": {
+        width: "100%",
+        height: 52,
+        display: "flex",
+        padding: "8px 16px",
+        alignItems: "center",
+        cursor: "pointer",
+        "&.select, &:hover": {
+          background:
+            "linear-gradient(270deg, rgba(51, 117, 224, 0.12) 0%, rgba(51, 117, 224, 0.02) 100%), linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+        },
+        "& img": {
+          width: 24,
+          height: 24,
+          marginRight: 12,
+        },
+        "& >div": {
+          flex: 1,
+          overflow: "hidden",
+          "& p:nth-of-type(2)": {
+            fontSize: 12,
+            lineHeight: "17px",
+            color: theme.palette.grey[500],
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          },
+        },
+        "& i": {
+          color: theme.palette.grey[500],
+        },
+      },
+    },
+  },
+  right: {
+    minHeight: "100%",
+    right: "100%",
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 56px)",
+    padding: "24px 0 24px 24px",
+    // "&::-webkit-scrollbar": {
+    //   width: 5,
+    //   height: 5,
+    //   backgroundColor: "transparent",
+    // },
+    // "&::-webkit-scrollbar-track": {
+    //   width: 5,
+    //   height: 5,
+    //   backgroundColor: "transparent",
+    // },
+    // "&::-webkit-scrollbar-thumb": {
+    //   backgroundColor: "rgba(0, 0, 0, 0.6)",
+    //   borderRadius: 5,
+    // },
+  },
+  token_info_link: {
+    "& .label": {
+      lineHeight: "20px",
+      height: 20,
+      maxWidth: 90,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      color: theme.palette.grey[500],
+      margin: "0 0 8px",
+    },
+    "& .item": {
+      width: 180,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      textAlign: "right",
+      height: 20,
+      lineHeight: "20px",
+      color: theme.palette.primary.main,
+      margin: "0 0 8px",
+    },
+    "& .item1": {
+      textAlign: "right",
+      lineHeight: "20px",
+      height: 20,
+      maxWidth: 140,
+      overflow: "hidden",
+      margin: "0 0 8px",
+    },
+  },
+  token_info_content: {
+    margin: "16px 0 0",
+    fontSize: 14,
+    lineHeight: "22px",
+    borderTop: `1px solid ${theme.palette.grey[50]}`,
+    "& h3": {
+      fontSize: 18,
+      lineHeight: "26px",
+      fontWeight: "bold",
+      position: "relative",
+      paddingLeft: 10,
+      margin: "16px 0 12px",
+      "&:before": {
+        content: '""',
+        position: "absolute",
+        left: 0,
+        top: 5,
+        width: 4,
+        height: 16,
+        background: theme.palette.primary.main,
+      },
+    },
+  },
+  orderBtn: {
+    padding: "12px 16px 6px",
+    display: "flex",
+    alignItems: "center",
+    "& button": {
+      minWidth: 56,
+      borderRadius: 2,
+      height: 24,
+      fontSize: 14,
+      marginRight: 8,
+      color: theme.palette.grey[800],
+      padding: "0 8px",
+      "&.select": {
+        background: theme.palette.primary.main,
+        color: theme.palette.common.white,
+      },
+    },
+  },
+  detail_header: {
+    width: "100%",
+    height: 52,
+    background: "linear-gradient(0deg, #F4F4F5, #F4F4F5), #F7F9FC",
+    borderRadius: 2,
+    padding: "20px 14px",
+    display: "flex",
+    alignItems: "center",
+    "& i": {
+      marginRight: 5,
+    },
+    "& span:nth-of-type(1)": {
+      cursor: "pointer",
+    },
+    "& span:nth-of-type(2)": {
+      color: theme.palette.grey[500],
+      marginLeft: 5,
+    },
+  },
+  info: {
+    margin: "32px 0 0",
+    display: "flex",
+  },
+  part1: {
+    minWidth: 208,
+    textAlign: "center",
+    "& img": {
+      width: 88,
+      height: 88,
+      display: "block",
+      margin: "0 auto",
+    },
+    "& h3": {
+      fontSize: 26,
+      lineHeight: "38px",
+      fontWeight: "bold",
+      margin: "10px 0 0",
+    },
+    "& p": {
+      color: theme.palette.grey[500],
+    },
+  },
+  part2: {
+    flex: 1,
+    padding: "0 60px 0 20px",
+    overflow: "hidden",
+  },
+});

@@ -1,0 +1,76 @@
+.g-msgbox {
+  width: 100%;
+  top: 16px;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1499;
+}
+.g-message {
+  pointer-events: none;
+  position: fixed;
+  min-width: 120px;
+  padding: 5px 10px;
+  background: #fff;
+  border: 5px;
+  box-shadow: 0px 1px 5px rgba(36, 43, 50, 0.2),
+    0px 3px 4px rgba(36, 43, 50, 0.12), 0px 2px 4px rgba(36, 43, 50, 0.14);
+  border-radius: 5px;
+  z-index: 1900;
+  color: #242b32;
+  margin: 0 auto 10px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  white-space: nowrap;
+  text-align: center;
+  display: flex;
+  flex-shrink: unset;
+  align-items: center;
+  animation: once 0.5s ease-in-out 1 forwards;
+}
+.g-message.close {
+  animation: close 0.5s ease-in-out 1 forwards;
+}
+.g-message i {
+  height: 24px;
+}
+.g-message span {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  margin: 0 0 0 5px;
+}
+.g-message .b-icon-info {
+  color: #3375e0;
+}
+.g-message .b-icon-suspended1 {
+  color: #fcb71e;
+}
+.g-message .b-icon-delete {
+  color: #f73a46;
+}
+.g-message .b-icon-check {
+  color: #51d372;
+}
+
+@keyframes once {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes close {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
